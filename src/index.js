@@ -7,11 +7,12 @@ import ServicioApiCustomers from './components/ServicioApiCustomers';
 import ServiceApiSuppliers from './components/ServiceApiSuppliers';
 import EmpleadosDepartamento from './components/EmpleadosDepartamento';
 import EmpleadosDepartamentoV2 from './components/EmpleadosDepartamentoV2';
+import EmpleadosOficios from './components/EmpleadosOficios';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <EmpleadosDepartamentoV2 />
+    <EmpleadosOficios />
 );
 
 // If you want to start measuring performance in your app, pass a function

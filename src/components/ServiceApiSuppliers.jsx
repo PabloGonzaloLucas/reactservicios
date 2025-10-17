@@ -1,16 +1,18 @@
 import axios from 'axios';
 import React, { Component } from 'react'
+import Global from '../Global';
 
 export default class ServiceApiSuppliers extends Component {
     state = {
         customers : [],
         customerFiltrado: {}
     }
-    url = "https://services.odata.org/V4/Northwind/Northwind.svc/Suppliers"
+    request = "/Suppliers"
+    url = Global.urlNorthwind
     cajatexto = React.createRef();
     
     componentDidMount = () => {
-        axios.get(this.url).then(response => {
+        axios.get(this.url+this.request).then(response => {
             console.log(response.data.value)
             this.setState({
                 customers: response.data.value
@@ -28,7 +30,21 @@ export default class ServiceApiSuppliers extends Component {
         event.preventDefault()
         let id = this.cajatexto.current.value
         console.log(id)
-        
+        /*
+        REALIZAMOS LA ÈTICION DE NUEVO
+        axios.get(this.url).then(response => {
+            for(var supplier of response.data.value){
+                if(supplier.SupplierID == id){
+                    this.setState({
+                        supplier: supplier
+                    })
+                    break;
+                }
+            }
+        })
+
+        */
+
         this.state.customers.map((customer, index) => {
             if(id == customer.SupplierID){
                 this.setState({
@@ -48,7 +64,10 @@ export default class ServiceApiSuppliers extends Component {
             <ul>
                 {
                     this.state.customers.map((customer, index) => {
-                        return(<li key={customer.SupplierID}>ID: {customer.SupplierID}, ContactName: {customer.ContactName}</li>)
+                        return(<li key={customer.SupplierID}>
+                            ID: {customer.SupplierID}, 
+                            ContactName: {customer.ContactName}
+                            </li>)
                     })
                 }
             </ul>
@@ -64,6 +83,7 @@ export default class ServiceApiSuppliers extends Component {
                         <h1>{this.state.customerFiltrado.ContactName}</h1>
                         <h1>{this.state.customerFiltrado.City}</h1>
                         <h1>{this.state.customerFiltrado.Address}</h1>
+                        <h1>{this.state.customerFiltrado.Country}</h1>
                     </>
                 }
             </form>

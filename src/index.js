@@ -8,11 +8,19 @@ import ServiceApiSuppliers from './components/ServiceApiSuppliers';
 import EmpleadosDepartamento from './components/EmpleadosDepartamento';
 import EmpleadosDepartamentoV2 from './components/EmpleadosDepartamentoV2';
 import EmpleadosOficios from './components/EmpleadosOficios';
-
+import Departamentos from './components/maestrodetalle/Departamentos';
+import Cursos from './components/ejemplocomunicacion/Cursos';
+import TablaMultiplicar from './components/TablaMultiplicar';
+import Home from './components/Home';
+import Router from './components/Router'
+import MenuRutas from './components/MenuRutas';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <EmpleadosOficios />
+    <div style={{display: "flex",justifyContent:"center", alignItems:"center", flexDirection:"column"}}>
+        <MenuRutas/>
+        <Router />
+    </div>
 );
 
 // If you want to start measuring performance in your app, pass a function

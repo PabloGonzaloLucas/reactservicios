@@ -23,6 +23,12 @@ export class TablaMultiplicar extends Component {
         this.generarTablaMultiplicar();
     }
 
+    componentDidUpdate = (oldProps) => {
+        if(oldProps.numero != this.props.numero){
+            this.generarTablaMultiplicar()
+        }
+    }
+
     render() {
         return (
         <div>

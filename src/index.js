@@ -14,12 +14,16 @@ import TablaMultiplicar from './components/TablaMultiplicar';
 import Home from './components/Home';
 import Router from './components/Router'
 import MenuRutas from './components/MenuRutas';
+import 'bootstrap/dist/css/bootstrap.min.css';
+// import $ from 'jquery/';
+import Popper from 'popper.js'
+import 'bootstrap/dist/js/bootstrap.bundle';
+import HospitalesMultiple from './components/HospitalesMultiple';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <div style={{display: "flex",justifyContent:"center", alignItems:"center", flexDirection:"column"}}>
-        <MenuRutas/>
-        <Router />
+        <HospitalesMultiple />
     </div>
 );
 

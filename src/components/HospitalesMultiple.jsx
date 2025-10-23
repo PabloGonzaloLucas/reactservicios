@@ -28,23 +28,28 @@ export class HospitalesMultiple extends Component {
 
     getHospitalesSeleccionados = (event) => {
         event.preventDefault()
-        let aux = [];
-        let options = this.selectHospital.current.options;
-        for(var option of options){
-            if(option.selected == true){
-                aux.push(option.value);
-            }
-        }
+        let aux = this.getSeleccion()
         this.setState({
             hospitalesSeleccionados : aux
         })
         
     }
 
+    getSeleccion = () => {
+         let aux = [];
+        let options = this.selectHospital.current.options;
+        for(var option of options){
+            if(option.selected == true){
+                aux.push(option.value);
+            }
+        }
+        return aux;
+    }
+
     incrementarSalarios = (event) =>{
         event.preventDefault()
         let request = "api/trabajadores/UpdateSalarioTrabajadoresHospitales?"
-        this.getHospitalesSeleccionados(event)
+        let aux = this.getSeleccion()
         let salarioIncrement = this.cajaSalario.current.value
         let urlPut = this.url+request+"incremento="+salarioIncrement+"&" 
         for(var id of this.state.hospitalesSeleccionados){
@@ -54,6 +59,9 @@ export class HospitalesMultiple extends Component {
         console.log(urlPut)
         axios.put(urlPut).then(res => {
             console.log("actualizado")
+            this.setState({
+                hospitalesSeleccionados: aux
+            })
         })
         
     }
